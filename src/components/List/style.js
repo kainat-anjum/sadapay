@@ -18,8 +18,8 @@ export const ListStyled = styled.section`
     border-top: 1px solid ${colors.alphaGreyColor};
 
     @media ${device.tablet} {
-      grid-template-columns:repeat(5, 1fr);
-  }
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
 
   .add-button {
@@ -43,7 +43,7 @@ export const ListStyled = styled.section`
       font-size: 12px;
       padding: 0px 10px;
       height: 30px;
-  }
+    }
   }
 
   .edit-link {

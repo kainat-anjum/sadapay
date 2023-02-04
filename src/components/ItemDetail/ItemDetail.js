@@ -3,14 +3,14 @@ import { AppContext } from "../../context/AppContext";
 import { ItemDetailStyled } from "./style";
 import { addItem, editItem, deleteItem } from "../../actions/actions";
 
-const INITAL_STATE={
+const INITAL_STATE = {
   id: "",
   name: "",
   description: "",
   price: "",
   quantity: "",
   priceReduction: "",
-}
+};
 
 export const ItemDetail = (props) => {
   const { setShowAddItemDetails, itemId } = props;
@@ -26,8 +26,7 @@ export const ItemDetail = (props) => {
       setItemDetails({
         ...itemDetails,
       });
-    }
-    else {
+    } else {
       setItemDetails(INITAL_STATE);
     }
   }, [itemId]);
@@ -112,13 +111,15 @@ export const ItemDetail = (props) => {
           />
         </article>
         <article>
-          <h3>Sale Offer</h3>
+          <h3>Discount offered</h3>
           <input
             type="number"
             name="priceReduction"
             className="input"
             onChange={(e) => handleChange(e)}
             value={itemDetails.priceReduction}
+            min="0"
+            max="1"
           />
         </article>
       </section>

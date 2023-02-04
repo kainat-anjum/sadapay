@@ -25,12 +25,12 @@ export const List = () => {
     setShowAddItemDetails(true);
   };
 
-  const calculatePrice=(offPrice)=>{
-    const salePrice= offPrice < 10
-                          ? offPrice * 10
-                          : offPrice
-                          return salePrice
-  }
+  const calculatePrice = (item) => {
+    const discount = item.priceReduction * 100;
+    const discountPrice = (item.price * discount) / 100;
+    const salePrice = item.price - discountPrice;
+    return salePrice;
+  };
 
   return (
     <ListStyled>
@@ -60,20 +60,16 @@ export const List = () => {
         {itemsList &&
           itemsList.map((item, index) => (
             <article className="list" key={index}>
-              {console.log("list on eidt", itemsList, item.priceReduction)}
               <p>{item.name}</p>
-              <p>{item.price}</p>
+              <p>{calculatePrice(item)}</p>
               <p>{item.quantity}</p>
               <div className="offer">
                 <p>
                   {item.priceReduction && item.priceReduction > 0
-                    ? `${
-                      calculatePrice(item.priceReduction)
-                      }% Off!`
+                    ? `${item.priceReduction * 100}% Off!`
                     : ""}
                 </p>
               </div>
-              {console.log("edit item id", item.id)}
               <p className="edit-link" onClick={() => editItem(item.id)}>
                 edit
               </p>
