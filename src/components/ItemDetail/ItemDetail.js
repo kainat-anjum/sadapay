@@ -9,7 +9,7 @@ const INITAL_STATE={
   description: "",
   price: "",
   quantity: "",
-  offer: "",
+  priceReduction: "",
 }
 
 export const ItemDetail = (props) => {
@@ -27,7 +27,7 @@ export const ItemDetail = (props) => {
         description: getItemDescription(itemId),
         price: getItemPrice(itemId),
         quantity: getItemQuantity(itemId),
-        offer: getItemOffer(itemId),
+        priceReduction: getItemOffer(itemId),
       });
     else {
       setItemDetails(INITAL_STATE);
@@ -56,7 +56,7 @@ export const ItemDetail = (props) => {
 
   const getItemOffer = (itemId) => {
     const filteredItem = itemsList.find((i) => i.id === itemId);
-    return filteredItem.offer;
+    return filteredItem.priceReduction;
   };
 
   const onCancel = () => {
@@ -66,8 +66,8 @@ export const ItemDetail = (props) => {
   const handleChange = (event) => {
     if (!itemId) {
       setItemDetails({
-        id: `item${Math.floor(Date.now())}`,
         ...itemDetails,
+        id: `item${Date.now()}`,
         [event.target.name]: event.target.value,
       });
     } else {
@@ -107,6 +107,7 @@ export const ItemDetail = (props) => {
         <article>
           <h3>Title</h3>
           <input
+            type="text"
             name="name"
             className="input"
             onChange={(e) => handleChange(e)}
@@ -116,6 +117,7 @@ export const ItemDetail = (props) => {
         <article>
           <h3>Price</h3>
           <input
+            type="number"
             name="price"
             className="input"
             onChange={(e) => handleChange(e)}
@@ -125,6 +127,7 @@ export const ItemDetail = (props) => {
         <article>
           <h3>Quantity</h3>
           <input
+            type="number"
             name="quantity"
             className="input"
             onChange={(e) => handleChange(e)}
@@ -134,10 +137,11 @@ export const ItemDetail = (props) => {
         <article>
           <h3>Sale Offer</h3>
           <input
-            name="offer"
+            type="number"
+            name="priceReduction"
             className="input"
             onChange={(e) => handleChange(e)}
-            value={itemDetails.offer}
+            value={itemDetails.priceReduction}
           />
         </article>
       </section>

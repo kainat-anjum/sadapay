@@ -48,6 +48,7 @@ export const ListStyled = styled.section`
 
   .edit-link {
     color: ${colors.primaryColor};
+    cursor: pointer;
   }
 
   .offer {

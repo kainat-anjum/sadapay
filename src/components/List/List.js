@@ -25,6 +25,13 @@ export const List = () => {
     setShowAddItemDetails(true);
   };
 
+  const calculatePrice=(offPrice)=>{
+    const salePrice= offPrice < 10
+                          ? offPrice * 10
+                          : offPrice
+                          return salePrice
+  }
+
   return (
     <ListStyled>
       <section className="page-header">
@@ -44,22 +51,29 @@ export const List = () => {
       )}
       <section className="list-wrapper">
         <article className="list">
-        <h3>Title</h3>
-        <h3>Price</h3>
-        <h3>Quantity</h3>
+          <h3>Title</h3>
+          <h3>Price</h3>
+          <h3>Quantity</h3>
         </article>
-
       </section>
       <section className="list-wrapper">
         {itemsList &&
-          itemsList.map((item,index) => (
+          itemsList.map((item, index) => (
             <article className="list" key={index}>
+              {console.log("list on eidt", itemsList, item.priceReduction)}
               <p>{item.name}</p>
               <p>{item.price}</p>
               <p>{item.quantity}</p>
               <div className="offer">
-              <p>{item.offer && item.offer.toLowerCase() === "yes" ? "Sale Offer!" : ""}</p>
+                <p>
+                  {item.priceReduction && item.priceReduction > 0
+                    ? `${
+                      calculatePrice(item.priceReduction)
+                      }% Off!`
+                    : ""}
+                </p>
               </div>
+              {console.log("edit item id", item.id)}
               <p className="edit-link" onClick={() => editItem(item.id)}>
                 edit
               </p>

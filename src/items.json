@@ -5,7 +5,7 @@
     "description": "Amazing first item for iteming your items firstly",
     "price": "1.50",
     "quantity": "2",
-    "offer": "yes"
+    "priceReduction": 0.5
   },
   {
     "id": "item2",
@@ -13,7 +13,7 @@
     "description": "Amazing first item for iteming your items firstly",
     "price": "9.99",
     "quantity": "3",
-    "offer": "no"
+    "priceReduction": 0
   },
   {
     "id": "item3",
@@ -21,6 +21,6 @@
     "description": "Amazing first item for iteming your items firstly",
     "price": "100",
     "quantity": "0",
-    "offer": "no"
+    "priceReduction": 2
   }
 ]
