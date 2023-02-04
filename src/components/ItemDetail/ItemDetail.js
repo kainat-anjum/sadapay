@@ -63,8 +63,8 @@ export const ItemDetail = (props) => {
 
   const onSave = () => {
     if (!itemId) {
-      const obj = [...itemsList, itemDetails];
-      dispatch(addItem(obj));
+      const list = [...itemsList, itemDetails];
+      dispatch(addItem(list));
     } else {
       dispatch(editItem(newItem));
     }
