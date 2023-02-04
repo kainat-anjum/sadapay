@@ -20,43 +20,20 @@ export const ItemDetail = (props) => {
   const itemsList = state.items;
 
   useEffect(() => {
-    if (itemId)
+    if (itemId) {
+      const itemDetails = getItemFromId(itemId);
+
       setItemDetails({
-        id: itemId,
-        name: getItemName(itemId),
-        description: getItemDescription(itemId),
-        price: getItemPrice(itemId),
-        quantity: getItemQuantity(itemId),
-        priceReduction: getItemOffer(itemId),
+        ...itemDetails,
       });
+    }
     else {
       setItemDetails(INITAL_STATE);
     }
   }, [itemId]);
 
-  const getItemName = (itemId) => {
-    const filteredItem = itemsList.find((i) => i.id === itemId);
-    return filteredItem.name;
-  };
-
-  const getItemPrice = (itemId) => {
-    const filteredItem = itemsList.find((i) => i.id === itemId);
-    return filteredItem.price;
-  };
-
-  const getItemQuantity = (itemId) => {
-    const filteredItem = itemsList.find((i) => i.id === itemId);
-    return filteredItem.quantity;
-  };
-
-  const getItemDescription = (itemId) => {
-    const filteredItem = itemsList.find((i) => i.id === itemId);
-    return filteredItem.description;
-  };
-
-  const getItemOffer = (itemId) => {
-    const filteredItem = itemsList.find((i) => i.id === itemId);
-    return filteredItem.priceReduction;
+  const getItemFromId = (itemId) => {
+    return itemsList.find((i) => i.id === itemId);
   };
 
   const onCancel = () => {
